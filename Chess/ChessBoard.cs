@@ -11,6 +11,7 @@ namespace Chess
         private ChessPiece[,] boardArray;
         private const int COLUMNS = 8;
         private int ROWS = 8;
+        private bool is960 = false;
 
         public ChessBoard()
         {
@@ -30,26 +31,68 @@ namespace Chess
         private ChessBoard SetupBoard()
         {
             boardArray = new ChessPiece[COLUMNS, ROWS];
-            string[] playerPeices = {
-                "Rook", "Knight", "Bishop", "Queen",
-                "King", "Bishop", "Knight", "Rook",
-                "Pawn", "Pawn", "Pawn", "Pawn",
-                "Pawn", "Pawn", "Pawn", "Pawn" };
+            List<string> playerPieces = new List<string>();
+
+            if (is960)
+            {
+                playerPieces = Setup960Board();
+            } else
+            {
+                playerPieces = new List<string> { "Rook", "Knight", "Bishop", "Queen", "King", "Bishop", "Knight", "Rook",
+                "Pawn", "Pawn", "Pawn", "Pawn", "Pawn", "Pawn", "Pawn", "Pawn" };
+            }
+            //string[] playerPieces = {
+            //    "Rook", "Knight", "Bishop", "Queen", "King", "Bishop", "Knight", "Rook",
+            //    "Pawn", "Pawn", "Pawn", "Pawn", "Pawn", "Pawn", "Pawn", "Pawn" };
+
+            
 
             for (int i = 0; i < COLUMNS; i++)
             {
                 // Player 0 pieces
                 boardArray[i, 0] =          (ChessPiece)Activator.CreateInstance(
-                                                Type.GetType("Chess." + playerPeices[i]));
+                                                Type.GetType("Chess." + playerPieces[i]));
                 boardArray[i, 1] =          (ChessPiece)Activator.CreateInstance(
-                                                Type.GetType("Chess." + playerPeices[i + COLUMNS]));
+                                                Type.GetType("Chess." + playerPieces[i + COLUMNS]));
                 // Player 1 pieces
                 boardArray[i, ROWS - 1] =   (ChessPiece)Activator.CreateInstance(
-                                                Type.GetType("Chess." + playerPeices[i]), new object[] { 1 });
+                                                Type.GetType("Chess." + playerPieces[i]), new object[] { 1 });
                 boardArray[i, ROWS - 2] =   (ChessPiece)Activator.CreateInstance(
-                                                Type.GetType("Chess." + playerPeices[i + COLUMNS]), new object[] { 1 });
+                                                Type.GetType("Chess." + playerPieces[i + COLUMNS]), new object[] { 1 });
             }
             return this;
+        }
+
+        private List<string> Setup960Board()
+        {
+            List<string> pieces = new List<string> { "", "", "", "", "", "", "", "",
+                "Pawn", "Pawn", "Pawn", "Pawn", "Pawn", "Pawn", "Pawn", "Pawn" };
+
+            List<int> indices = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7 };
+
+            Random r = new Random();
+
+            int randomNumber1 = r.Next(0, 4) * 2;
+            int randomNumber2 = r.Next(0, 4) * 2 + 1;
+            pieces[randomNumber1] = "Bishop";
+            pieces[randomNumber2] = "Bishop";
+
+            indices.RemoveAt(indices.IndexOf(randomNumber1));
+            indices.RemoveAt(indices.IndexOf(randomNumber2));
+
+            for (int i = 0; i < 3; i++)
+            {
+                int randomNumber3 = r.Next(0, indices.Count);
+                if (i == 2) pieces[indices[randomNumber3]] = "Queen";
+                else pieces[indices[randomNumber3]] = "Knight";
+                indices.RemoveAt(randomNumber3);
+            }
+
+            pieces[indices[0]] = "Rook";
+            pieces[indices[1]] = "King";
+            pieces[indices[2]] = "Rook";
+
+            return pieces;
         }
 
         /// <summary>
