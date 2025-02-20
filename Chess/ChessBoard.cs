@@ -11,8 +11,8 @@ namespace Chess
         private ChessPiece[,] boardArray;
         private const int COLUMNS = 8;
         private int ROWS = 8;
-        private bool is960 = false;
-
+        private bool is960;
+        
         public ChessBoard(bool is960)
         {
             this.is960 = is960;
@@ -29,24 +29,12 @@ namespace Chess
             get { return boardArray[x, y]; }
         }
 
-        private ChessBoard SetupBoard()
+        public ChessBoard SetupBoard()
         {
             boardArray = new ChessPiece[COLUMNS, ROWS];
             List<string> playerPieces = new List<string>();
 
-            if (is960)
-            {
-                playerPieces = Setup960Board();
-            } else
-            {
-                playerPieces = new List<string> { "Rook", "Knight", "Bishop", "Queen", "King", "Bishop", "Knight", "Rook",
-                "Pawn", "Pawn", "Pawn", "Pawn", "Pawn", "Pawn", "Pawn", "Pawn" };
-            }
-            //string[] playerPieces = {
-            //    "Rook", "Knight", "Bishop", "Queen", "King", "Bishop", "Knight", "Rook",
-            //    "Pawn", "Pawn", "Pawn", "Pawn", "Pawn", "Pawn", "Pawn", "Pawn" };
-
-            
+            playerPieces = CreateBoard();
 
             for (int i = 0; i < COLUMNS; i++)
             {
@@ -64,35 +52,71 @@ namespace Chess
             return this;
         }
 
-        private List<string> Setup960Board()
+
+        /// <summary>
+        /// This method creates a list for the rows of the chess board and uses the setup of either regular chess, or goes
+        /// through the process or randomizing the positions of the first row of pieces using the rules established by
+        /// Chess960 (Bishops on opposite colors, King in random position with both rooks on opposite sides of it, and
+        /// the Queen and Knights filling in the rest of the positions). Both versions have all pawns in the front.
+        /// </summary>
+        /// <returns>
+        /// If the Board object wants to use Chess960, gives a string list that holds the positions of pieces using its rules.
+        /// Otherwise, returns a string list that uses the positions of regular Chess.
+        /// </returns>
+        public List<string> CreateBoard()
         {
-            List<string> pieces = new List<string> { "", "", "", "", "", "", "", "",
-                "Pawn", "Pawn", "Pawn", "Pawn", "Pawn", "Pawn", "Pawn", "Pawn" };
+            // Initializes List for pieces
+            List<string> pieces = new List<string>();
 
-            List<int> indices = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7 };
 
-            Random r = new Random();
-
-            int randomNumber1 = r.Next(0, 4) * 2;
-            int randomNumber2 = r.Next(0, 4) * 2 + 1;
-            pieces[randomNumber1] = "Bishop";
-            pieces[randomNumber2] = "Bishop";
-
-            indices.RemoveAt(indices.IndexOf(randomNumber1));
-            indices.RemoveAt(indices.IndexOf(randomNumber2));
-
-            for (int i = 0; i < 3; i++)
+            // If board is not using 960 rules, give piece positions of regular chess.
+            if (!is960)
             {
-                int randomNumber3 = r.Next(0, indices.Count);
-                if (i == 2) pieces[indices[randomNumber3]] = "Queen";
-                else pieces[indices[randomNumber3]] = "Knight";
-                indices.RemoveAt(randomNumber3);
+                pieces = new List<string> { "Rook", "Knight", "Bishop", "Queen", "King", "Bishop", "Knight", "Rook",
+                "Pawn", "Pawn", "Pawn", "Pawn", "Pawn", "Pawn", "Pawn", "Pawn" };
+            } 
+            else
+            {
+                // Pieces now holds the row of pawns and an empty row for the incoming pieces.
+                pieces = new List<string> { "", "", "", "", "", "", "", "",
+                "Pawn", "Pawn", "Pawn", "Pawn", "Pawn", "Pawn", "Pawn", "Pawn" };
+                // List of indices that will be removed when used.
+                List<int> indices = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7 };
+
+                // For random selection of indices.
+                Random r = new Random();
+
+                // Selects numbers between 0 (inclusive) and 4 (exclusive). Even multiplies by two to receive value of
+                // 0, 2, 4, or 6. Odd multiplies by 2 to get the same values as the even, but then adds 1 so that it
+                // receives a value of 1, 3, 5, or 7. These values determine the array positions of the Bishops pieces.
+                int randomNumberEven = r.Next(0, 4) * 2;
+                int randomNumberOdd = r.Next(0, 4) * 2 + 1;
+                pieces[randomNumberEven] = "Bishop";
+                pieces[randomNumberOdd] = "Bishop";
+
+                // Remove the values from indicies based on previous random numbers.
+                indices.RemoveAt(indices.IndexOf(randomNumberEven));
+                indices.RemoveAt(indices.IndexOf(randomNumberOdd));
+
+                // As there are no specific parameters for where the Queen and Knights go in Chess960, simply run through
+                // a for loop and pick a random index from indices to determine where the pieces are put in the array.
+                // Once selected, remove the index value.
+                for (int i = 0; i < 3; i++)
+                {
+                    int randomNumber = r.Next(0, indices.Count);
+                    if (i == 2) pieces[indices[randomNumber]] = "Queen";
+                    else pieces[indices[randomNumber]] = "Knight";
+                    indices.RemoveAt(randomNumber);
+                }
+
+                // As there are only 3 index values remaining, and the Rooks must be on opposite sides of the King, place
+                // them in order of Left Rook, King, Right Rook. No need for deleting the indexes now.
+                pieces[indices[0]] = "Rook";
+                pieces[indices[1]] = "King";
+                pieces[indices[2]] = "Rook";
             }
 
-            pieces[indices[0]] = "Rook";
-            pieces[indices[1]] = "King";
-            pieces[indices[2]] = "Rook";
-
+            // Return the list of finalized rows for either regular chess or Chess960.
             return pieces;
         }
 
