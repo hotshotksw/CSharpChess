@@ -46,8 +46,8 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
-            this.coordinates = new System.Windows.Forms.ToolTip(this.components);
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.coordinates = new System.Windows.Forms.ToolTip(this.components);
             this.boardLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -81,7 +81,6 @@
             this.boardLayoutPanel.Controls.Add(this.label16, 0, 7);
             this.boardLayoutPanel.Controls.Add(this.label17, 0, 8);
             this.boardLayoutPanel.Controls.Add(this.checkBox1, 0, 0);
-            this.boardLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.boardLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.boardLayoutPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.boardLayoutPanel.Name = "boardLayoutPanel";
@@ -325,15 +324,21 @@
             // 
             // checkBox1
             // 
+            this.checkBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkBox1.Appearance = System.Windows.Forms.Appearance.Button;
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            this.checkBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold);
             this.checkBox1.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.checkBox1.Location = new System.Drawing.Point(3, 3);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(181, 44);
+            this.checkBox1.Size = new System.Drawing.Size(181, 159);
             this.checkBox1.TabIndex = 17;
-            this.checkBox1.Text = "Chess960 Mode";
+            this.checkBox1.Text = "CHESS960 MODE";
             this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // Form1
             // 

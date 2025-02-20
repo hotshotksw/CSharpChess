@@ -1,19 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using Chess;
+﻿using Chess;
+using System;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FormClient
 {
     public partial class Form1 : Form
     {
-        ChessBoard chessBoard = new ChessBoard();
+        ChessBoard chessBoard = new ChessBoard(false);
         Chess.Point selectedPiece = new Chess.Point();
         int selectedPlayer = -1;
 
@@ -120,6 +114,21 @@ namespace FormClient
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked == true)
+            {
+                chessBoard = new ChessBoard(true);
+            } else
+            {
+                chessBoard = new ChessBoard(false);
+            }
+
+            selectedPiece = new Chess.Point();
+            selectedPlayer = -1;
+            DrawPieces(chessBoard);
         }
     }
 }

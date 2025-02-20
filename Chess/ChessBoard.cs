@@ -13,8 +13,9 @@ namespace Chess
         private int ROWS = 8;
         private bool is960 = false;
 
-        public ChessBoard()
+        public ChessBoard(bool is960)
         {
+            this.is960 = is960;
             SetupBoard();
         }
 
