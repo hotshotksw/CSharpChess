@@ -3,8 +3,20 @@
   "WorkspaceRootPath": "C:\\Coding\\C# Projects\\Forks\\CSharpChess\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1CE4BB3D-7F5D-4308-8875-3E9EEFD67647}|Chess\\Chess.csproj|C:\\Coding\\C# Projects\\Forks\\CSharpChess\\chess\\chessboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3C0AC5A0-A68B-46FD-8D2A-8562F3393139}|ChessTests\\ChessTests.csproj|C:\\Coding\\C# Projects\\Forks\\CSharpChess\\chesstests\\chessboardtests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3C0AC5A0-A68B-46FD-8D2A-8562F3393139}|ChessTests\\ChessTests.csproj|solutionrelative:chesstests\\chessboardtests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A52234C1-F8F4-4B77-97E6-32FEFDFE2B35}|FormClient\\FormClient.csproj|C:\\Coding\\C# Projects\\Forks\\CSharpChess\\formclient\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A52234C1-F8F4-4B77-97E6-32FEFDFE2B35}|FormClient\\FormClient.csproj|solutionrelative:formclient\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1CE4BB3D-7F5D-4308-8875-3E9EEFD67647}|Chess\\Chess.csproj|c:\\coding\\c# projects\\forks\\csharpchess\\chess\\chessboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1CE4BB3D-7F5D-4308-8875-3E9EEFD67647}|Chess\\Chess.csproj|solutionrelative:chess\\chessboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A52234C1-F8F4-4B77-97E6-32FEFDFE2B35}|FormClient\\FormClient.csproj|C:\\Coding\\C# Projects\\Forks\\CSharpChess\\formclient\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{A52234C1-F8F4-4B77-97E6-32FEFDFE2B35}|FormClient\\FormClient.csproj|solutionrelative:formclient\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A52234C1-F8F4-4B77-97E6-32FEFDFE2B35}|FormClient\\FormClient.csproj|C:\\Coding\\C# Projects\\Forks\\CSharpChess\\formclient\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -13,18 +25,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{A52234C1-F8F4-4B77-97E6-32FEFDFE2B35}|FormClient\\FormClient.csproj|C:\\Coding\\C# Projects\\Forks\\CSharpChess\\formclient\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A52234C1-F8F4-4B77-97E6-32FEFDFE2B35}|FormClient\\FormClient.csproj|solutionrelative:formclient\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A52234C1-F8F4-4B77-97E6-32FEFDFE2B35}|FormClient\\FormClient.csproj|c:\\coding\\c# projects\\forks\\csharpchess\\formclient\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A52234C1-F8F4-4B77-97E6-32FEFDFE2B35}|FormClient\\FormClient.csproj|solutionrelative:formclient\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3C0AC5A0-A68B-46FD-8D2A-8562F3393139}|ChessTests\\ChessTests.csproj|c:\\coding\\c# projects\\forks\\csharpchess\\chesstests\\chessboardtests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3C0AC5A0-A68B-46FD-8D2A-8562F3393139}|ChessTests\\ChessTests.csproj|solutionrelative:chesstests\\chessboardtests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A52234C1-F8F4-4B77-97E6-32FEFDFE2B35}|FormClient\\FormClient.csproj|C:\\Coding\\C# Projects\\Forks\\CSharpChess\\formclient\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{A52234C1-F8F4-4B77-97E6-32FEFDFE2B35}|FormClient\\FormClient.csproj|solutionrelative:formclient\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,11 +34,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Coding\\C# Projects\\Forks\\CSharpChess\\FormClient\\Program.cs",
               "RelativeDocumentMoniker": "FormClient\\Program.cs",
@@ -51,33 +51,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "ChessBoardTests.cs",
               "DocumentMoniker": "C:\\Coding\\C# Projects\\Forks\\CSharpChess\\ChessTests\\ChessBoardTests.cs",
               "RelativeDocumentMoniker": "ChessTests\\ChessBoardTests.cs",
               "ToolTip": "C:\\Coding\\C# Projects\\Forks\\CSharpChess\\ChessTests\\ChessBoardTests.cs",
               "RelativeToolTip": "ChessTests\\ChessBoardTests.cs",
-              "ViewState": "AgIAADIAAAAAAAAAAAAAADYAAAA3AAAAAAAAAA==",
+              "ViewState": "AgIAADQAAAAAAAAAAAAAAFAAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-20T20:28:28.76Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "ChessBoard.cs",
               "DocumentMoniker": "C:\\Coding\\C# Projects\\Forks\\CSharpChess\\Chess\\ChessBoard.cs",
               "RelativeDocumentMoniker": "Chess\\ChessBoard.cs",
               "ToolTip": "C:\\Coding\\C# Projects\\Forks\\CSharpChess\\Chess\\ChessBoard.cs",
               "RelativeToolTip": "Chess\\ChessBoard.cs",
-              "ViewState": "AgIAADAAAAAAAAAAAAAAADsAAABzAAAAAAAAAA==",
+              "ViewState": "AgIAAFcAAAAAAAAAAAAAwHUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-20T00:16:27.573Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "Form1.Designer.cs",
               "DocumentMoniker": "C:\\Coding\\C# Projects\\Forks\\CSharpChess\\FormClient\\Form1.Designer.cs",
               "RelativeDocumentMoniker": "FormClient\\Form1.Designer.cs",
@@ -90,7 +90,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "Form1.cs",
               "DocumentMoniker": "C:\\Coding\\C# Projects\\Forks\\CSharpChess\\FormClient\\Form1.cs",
               "RelativeDocumentMoniker": "FormClient\\Form1.cs",
@@ -103,7 +103,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
               "Title": "Form1.cs [Design]",
               "DocumentMoniker": "C:\\Coding\\C# Projects\\Forks\\CSharpChess\\FormClient\\Form1.cs",
               "RelativeDocumentMoniker": "FormClient\\Form1.cs",

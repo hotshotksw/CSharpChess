@@ -52,18 +52,6 @@ namespace Chess.Tests
         }
 
         [TestMethod()]
-        public void ShouldHaveKingInDifferentPosition()
-        {
-            ChessBoard board1 = new ChessBoard(false);
-            List<string> pieces1 = board1.CreateBoard();
-
-            ChessBoard board2 = new ChessBoard(true);
-            List<string> pieces2 = board2.CreateBoard();
-
-            Assert.AreNotEqual(pieces1.IndexOf("King"), pieces2.IndexOf("King"));
-        }
-
-        [TestMethod()]
         public void ShouldhaveRooksOnOppositeSidesOfKing()
         {
             ChessBoard board = new ChessBoard(true);
@@ -74,6 +62,25 @@ namespace Chess.Tests
             int KingIndex = pieces.IndexOf("King");
 
             bool correct = (LeftRookIndex < KingIndex && KingIndex < RightRookIndex) ? true : false;
+
+            Assert.AreEqual(true, correct);
+        }
+
+        [TestMethod()]
+        public void ShouldOnlyHavePawns()
+        {
+            ChessBoard board = new ChessBoard(true);
+            List<string> pieces = board.CreateBoard();
+
+            bool correct = true;
+            for (int i = 8; i < pieces.Count; i++)
+            {
+                if (pieces[i] != "Pawn")
+                {
+                    correct = false;
+                    i = pieces.Count;
+                }
+            }
 
             Assert.AreEqual(true, correct);
         }

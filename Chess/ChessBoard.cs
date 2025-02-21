@@ -69,7 +69,7 @@ namespace Chess
             List<string> pieces = new List<string>();
 
 
-            // If board is not using 960 rules, give piece positions of regular chess.
+            // If 'ChessBoard' is not using 960 rules, give piece positions of regular chess.
             if (!is960)
             {
                 pieces = new List<string> { "Rook", "Knight", "Bishop", "Queen", "King", "Bishop", "Knight", "Rook",
@@ -77,7 +77,7 @@ namespace Chess
             } 
             else
             {
-                // Pieces now holds the row of pawns and an empty row for the incoming pieces.
+                // 'Pieces' now holds the row of pawns and an empty row for the incoming pieces.
                 pieces = new List<string> { "", "", "", "", "", "", "", "",
                 "Pawn", "Pawn", "Pawn", "Pawn", "Pawn", "Pawn", "Pawn", "Pawn" };
                 // List of indices that will be removed when used.
@@ -86,15 +86,15 @@ namespace Chess
                 // For random selection of indices.
                 Random r = new Random();
 
-                // Selects numbers between 0 (inclusive) and 4 (exclusive). Even multiplies by two to receive value of
-                // 0, 2, 4, or 6. Odd multiplies by 2 to get the same values as the even, but then adds 1 so that it
-                // receives a value of 1, 3, 5, or 7. These values determine the array positions of the Bishops pieces.
+                // Selects numbers between 0 (inclusive) and 4 (exclusive). 'Even' multiplies by two to receive value of
+                // 0, 2, 4, or 6. 'Odd' multiplies by 2 to get the same values as the even, but then adds 1 so that it
+                // receives a value of 1, 3, 5, or 7. These values determine the array positions of the Bishop pieces.
                 int randomNumberEven = r.Next(0, 4) * 2;
                 int randomNumberOdd = r.Next(0, 4) * 2 + 1;
                 pieces[randomNumberEven] = "Bishop";
                 pieces[randomNumberOdd] = "Bishop";
 
-                // Remove the values from indicies based on previous random numbers.
+                // Remove the values from 'indices' based on previous random numbers.
                 indices.RemoveAt(indices.IndexOf(randomNumberEven));
                 indices.RemoveAt(indices.IndexOf(randomNumberOdd));
 
@@ -110,7 +110,7 @@ namespace Chess
                 }
 
                 // As there are only 3 index values remaining, and the Rooks must be on opposite sides of the King, place
-                // them in order of Left Rook, King, Right Rook. No need for deleting the indexes now.
+                // them in order of Left Rook, King, Right Rook. No need for deleting the indeces now.
                 pieces[indices[0]] = "Rook";
                 pieces[indices[1]] = "King";
                 pieces[indices[2]] = "Rook";
