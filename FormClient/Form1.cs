@@ -1,19 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using Chess;
+﻿using Chess;
+using System;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FormClient
 {
     public partial class Form1 : Form
     {
-        ChessBoard chessBoard = new ChessBoard();
+        ChessBoard chessBoard = new ChessBoard(false);
         Chess.Point selectedPiece = new Chess.Point();
         int selectedPlayer = -1;
 
@@ -33,8 +27,8 @@ namespace FormClient
                     button.Margin = new Padding(0);
                     button.FlatStyle = FlatStyle.Flat;
                     button.FlatAppearance.BorderSize = 0;
-                    if ((x + y) % 2 == 1) button.BackColor = Color.Gray;
-                    else button.BackColor = Color.DarkGray;
+                    if ((x + y) % 2 == 1) button.BackColor = Color.White;
+                    else button.BackColor = Color.AntiqueWhite;
                     boardLayoutPanel.Controls.Add(button);
                     button.Click += Click_Board;
                 }
@@ -99,8 +93,8 @@ namespace FormClient
                         ChessPiece chessPiece = board[x, y];
                         button.Tag = chessPiece;
                         button.Text = chessPiece.ToString().Replace("Chess.", "");
-                        if (chessPiece.Player == 1) button.ForeColor = Color.White;
-                        else button.ForeColor = Color.Black;
+                        if (chessPiece.Player == 1) button.Font = new Font(button.Font, FontStyle.Regular); //button.ForeColor = Color.White; 
+                        else button.Font = new Font(button.Font, FontStyle.Bold); //button.ForeColor = Color.Black;
                     }
                     else
                     {
@@ -110,6 +104,31 @@ namespace FormClient
                     this.coordinates.SetToolTip(button, String.Format("({0}, {1})", x, y));
                 }
             }
+        }
+
+        private void boardLayoutPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked == true)
+            {
+                chessBoard = new ChessBoard(true);
+            } else
+            {
+                chessBoard = new ChessBoard(false);
+            }
+
+            selectedPiece = new Chess.Point();
+            selectedPlayer = -1;
+            DrawPieces(chessBoard);
         }
     }
 }
